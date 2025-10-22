@@ -3,7 +3,6 @@ pandas
 plotly
 requests
 gspread
-oauth2client
 google-auth
 xlsxwriter
 
