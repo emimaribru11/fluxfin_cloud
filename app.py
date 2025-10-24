@@ -2,6 +2,7 @@ import os
 import json
 from datetime import datetime
 from io import BytesIO
+from pathlib import Path
 
 import pandas as pd
 import plotly.express as px
@@ -12,6 +13,11 @@ from utils.api_gsheets import get_client, open_sheet  # usa st.secrets["gservice
 
 # ---- Configuración UI ----
 st.set_page_config(page_title="FluxFin — Cloud", layout="wide")
+
+# ✅ Nuevo formato de logo
+logo_path = Path("assets/logo_fluxfin.jpeg")
+st.logo(str(logo_path))
+
 st.title("FluxFin — Finanzas personales (Cloud)")
 
 # ---- Secrets ----
@@ -206,7 +212,6 @@ elif menu == "Exportar":
     if tx.empty:
         st.info("No hay datos para exportar.")
     else:
-        # Exportar a Excel correctamente
         buffer = BytesIO()
         with pd.ExcelWriter(buffer, engine="xlsxwriter") as writer:
             tx.to_excel(writer, index=False, sheet_name="movimientos")
