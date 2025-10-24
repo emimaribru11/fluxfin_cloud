@@ -1,0 +1,37 @@
+{
+  "light_minimal": {
+    "base": "light",
+    "primary": "#16A34A",
+    "bg": "#FFFFFF",
+    "text": "#0F172A",
+    "accent": "#10B981"
+  },
+  "dark_futuristic": {
+    "base": "dark",
+    "primary": "#22C55E",
+    "bg": "#0B1220",
+    "text": "#E5E7EB",
+    "accent": "#84CC16"
+  },
+  "light_corporate": {
+    "base": "light",
+    "primary": "#0EA5E9",
+    "bg": "#F8FAFC",
+    "text": "#0F172A",
+    "accent": "#64748B"
+  },
+  "dark_graphite": {
+    "base": "dark",
+    "primary": "#8B5CF6",
+    "bg": "#0F172A",
+    "text": "#E2E8F0",
+    "accent": "#A78BFA"
+  },
+  "light_warm": {
+    "base": "light",
+    "primary": "#F97316",
+    "bg": "#FFFBF5",
+    "text": "#1F2937",
+    "accent": "#F59E0B"
+  }
+}
