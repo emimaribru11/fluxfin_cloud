@@ -1,8 +1,0 @@
-streamlit
-pandas
-plotly
-requests
-gspread
-google-auth
-xlsxwriter
-
