@@ -11,6 +11,27 @@ import streamlit as st
 
 from utils.api_gsheets import get_client, open_sheet  # usa st.secrets["gservice_account"]
 
+# ---- LOGIN DE ADMIN ----
+def login():
+    st.title("🔐 Iniciar sesión")
+    email = st.text_input("Email")
+    password = st.text_input("Contraseña", type="password")
+
+    if st.button("Ingresar"):
+        admin_email = st.secrets["auth"]["admin_email"]
+        admin_pass = st.secrets["auth"]["admin_password"]
+        if email == admin_email and password == admin_pass:
+            st.session_state["is_admin"] = True
+            st.success("Bienvenido administrador 👑")
+            st.rerun()
+        else:
+            st.error("Credenciales incorrectas")
+
+# 🚨 Si no está logueado, no puede entrar
+if "is_admin" not in st.session_state or not st.session_state["is_admin"]:
+    login()
+    st.stop()
+
 # ---- Configuración UI ----
 st.set_page_config(page_title="FluxFin — Cloud", layout="wide")
 
@@ -28,7 +49,7 @@ SHEET_ID = st.secrets.get("SHEET_ID", None) or st.text_input(
 # ---- Conexión a Google Sheets (cacheada) ----
 @st.cache_resource(show_spinner=False)
 def _get_ws_clients(sheet_id: str):
-    gc = get_client()                  # toma gservice_account desde st.secrets
+    gc = get_client()  # toma gservice_account desde st.secrets
     sh = open_sheet(gc, sheet_id)
     ws_tx = sh.worksheet("transactions")
     ws_bg = sh.worksheet("budgets")
